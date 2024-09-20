@@ -114,7 +114,7 @@ class InventoryIntegrationTest {
     }
 
     @Test
-    public void clearingPlayerInventoryClearsCursorTest(Env env) {
+    void clearingPlayerInventoryClearsCursorTest(Env env) {
 
         var instance = env.createFlatInstance();
         var connection = env.createConnection();
