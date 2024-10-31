@@ -41,7 +41,7 @@ public final class DiscoveredExtension {
     private String entrypoint;
 
     /**
-     * Version of this extension, highly reccomended to set it.
+     * Version of this extension, highly recommended to set it.
      */
     private String version;
 
@@ -91,33 +91,27 @@ public final class DiscoveredExtension {
      */
     private transient ExtensionClassLoader classLoader;
 
-    @NotNull
-    public String getName() {
+    public @NotNull String getName() {
         return name;
     }
 
-    @NotNull
-    public String getEntrypoint() {
+    public @NotNull String getEntrypoint() {
         return entrypoint;
     }
 
-    @NotNull
-    public String getVersion() {
+    public @NotNull String getVersion() {
         return version;
     }
 
-    @NotNull
-    public String[] getAuthors() {
+    public @NotNull String[] getAuthors() {
         return authors;
     }
 
-    @NotNull
-    public String[] getDependencies() {
+    public @NotNull String[] getDependencies() {
         return dependencies;
     }
 
-    @NotNull
-    public ExternalDependencies getExternalDependencies() {
+    public @NotNull ExternalDependencies getExternalDependencies() {
         return externalDependencies;
     }
 
@@ -125,8 +119,7 @@ public final class DiscoveredExtension {
         originalJar = file;
     }
 
-    @Nullable
-    public File getOriginalJar() {
+    public @Nullable File getOriginalJar() {
         return originalJar;
     }
 
@@ -144,8 +137,7 @@ public final class DiscoveredExtension {
         classLoader = new ExtensionClassLoader(this.getName(), urls, this);
     }
 
-    @NotNull
-    public ExtensionClassLoader getClassLoader() {
+    public @NotNull ExtensionClassLoader getClassLoader() {
         return classLoader;
     }
 
@@ -218,8 +210,7 @@ public final class DiscoveredExtension {
 
     }
 
-    @NotNull
-    public JsonObject getMeta() {
+    public @NotNull JsonObject getMeta() {
         return meta;
     }
 
@@ -243,8 +234,7 @@ public final class DiscoveredExtension {
             this.message = message;
         }
 
-        @NotNull
-        public String getMessage() {
+        public @NotNull String getMessage() {
             return message;
         }
     }
