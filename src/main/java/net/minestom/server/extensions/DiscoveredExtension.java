@@ -82,14 +82,14 @@ public final class DiscoveredExtension {
     /**
      * The original jar this is from.
      */
-    transient private File originalJar;
+    private transient File originalJar;
 
-    transient private Path dataDirectory;
+    private transient Path dataDirectory;
 
     /**
      * The class loader that powers it.
      */
-    transient private ExtensionClassLoader classLoader;
+    private transient ExtensionClassLoader classLoader;
 
     @NotNull
     public String getName() {
