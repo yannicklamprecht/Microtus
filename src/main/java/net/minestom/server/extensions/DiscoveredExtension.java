@@ -12,58 +12,83 @@ import java.net.URL;
 import java.nio.file.Path;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * Represents an extension from an `extension.json` that is capable of powering an Extension object.
- *
+ * <p>
  * This has no constructor as its properties are set via GSON.
  */
 public final class DiscoveredExtension {
-    /** Static logger for this class. */
+    /**
+     * Static logger for this class.
+     */
     public static final Logger LOGGER = LoggerFactory.getLogger(DiscoveredExtension.class);
 
-    /** The regex that this name must pass. If it doesn't, it will not be accepted. */
-    public static final String NAME_REGEX = "[A-Za-z][_A-Za-z0-9]+";
+    /**
+     * The regex that this name must pass. If it doesn't, it will not be accepted.
+     */
+    public static final Pattern NAME_REGEX = Pattern.compile("[A-Za-z][_A-Za-z0-9]+");
 
-    /** Name of the DiscoveredExtension. Unique for all extensions. */
+    /**
+     * Name of the DiscoveredExtension. Unique for all extensions.
+     */
     private String name;
 
-    /** Main class of this DiscoveredExtension, must extend Extension. */
+    /**
+     * Main class of this DiscoveredExtension, must extend Extension.
+     */
     private String entrypoint;
 
-    /** Version of this extension, highly reccomended to set it. */
+    /**
+     * Version of this extension, highly reccomended to set it.
+     */
     private String version;
 
-    /** People who have made this extension. */
+    /**
+     * People who have made this extension.
+     */
     private String[] authors;
 
-    /** List of extension names that this depends on. */
+    /**
+     * List of extension names that this depends on.
+     */
     private String[] dependencies;
 
-    /** List of Repositories and URLs that this depends on. */
+    /**
+     * List of Repositories and URLs that this depends on.
+     */
     private ExternalDependencies externalDependencies;
 
     /**
      * Extra meta on the object.
      * Do NOT use as configuration:
-     *
+     * <p>
      * Meta is meant to handle properties that will
      * be accessed by other extensions, not accessed by itself
      */
     private JsonObject meta;
 
-    /** All files of this extension */
+    /**
+     * All files of this extension
+     */
     transient List<URL> files = new LinkedList<>();
 
-    /** The load status of this extension -- LOAD_SUCCESS is the only good one. */
+    /**
+     * The load status of this extension -- LOAD_SUCCESS is the only good one.
+     */
     transient LoadStatus loadStatus = LoadStatus.LOAD_SUCCESS;
 
-    /** The original jar this is from. */
+    /**
+     * The original jar this is from.
+     */
     transient private File originalJar;
 
     transient private Path dataDirectory;
 
-    /** The class loader that powers it. */
+    /**
+     * The class loader that powers it.
+     */
     transient private ExtensionClassLoader classLoader;
 
     @NotNull
@@ -144,7 +169,7 @@ public final class DiscoveredExtension {
             return;
         }
 
-        if (!extension.name.matches(NAME_REGEX)) {
+        if (!NAME_REGEX.matcher(extension.name).matches()) {
             LOGGER.error("Extension '{}' specified an invalid name.", extension.name);
             LOGGER.error("Extension '{}' will not be loaded.", extension.name);
             extension.loadStatus = DiscoveredExtension.LoadStatus.INVALID_NAME;
@@ -200,7 +225,7 @@ public final class DiscoveredExtension {
 
     /**
      * The status this extension has, all are breakpoints.
-     *
+     * <p>
      * LOAD_SUCCESS is the only valid one.
      */
     enum LoadStatus {
