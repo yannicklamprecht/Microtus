@@ -28,12 +28,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 @ExtendWith(MicrotusExtension.class)
-public class AnvilLoaderIntegrationTest {
+class AnvilLoaderIntegrationTest {
 
     private static final Path testRoot = Path.of("src", "test", "resources", "net", "minestom", "server", "instance");
 
     @Test
-    public void loadVanillaRegion(Env env) throws IOException {
+    void loadVanillaRegion(Env env) throws IOException {
         // load a full vanilla region, not checking any content just making sure it loads without issues.
 
         var worldFolder = extractWorld("anvil_vanilla_sample");
@@ -60,7 +60,7 @@ public class AnvilLoaderIntegrationTest {
     }
 
     @Test
-    public void parallelSaveNonexistentFiles(Env env) throws Exception {
+    void parallelSaveNonexistentFiles(Env env) throws Exception {
         var worldFolder = Files.createTempDirectory("minestom-test-world-parallel-save");
         AnvilLoader chunkLoader = new AnvilLoader(worldFolder);
         Instance instance = env.createFlatInstance(chunkLoader);
@@ -82,7 +82,7 @@ public class AnvilLoaderIntegrationTest {
     }
 
     @Test
-    public void loadHouse(Env env) throws IOException {
+    void loadHouse(Env env) throws IOException {
         // load a world that contains only a basic house and make sure it is loaded properly
 
         var worldFolder = extractWorld("anvil_loader");
@@ -178,7 +178,7 @@ public class AnvilLoaderIntegrationTest {
     }
 
     @Test
-    public void loadAndSaveChunk(Env env) throws IOException, InterruptedException {
+    void loadAndSaveChunk(Env env) throws IOException, InterruptedException {
         var worldFolder = extractWorld("anvil_loader");
         Instance instance = env.createFlatInstance(new AnvilLoader(worldFolder) {
             // Force loads inside current thread

@@ -88,7 +88,7 @@ class BlockTest {
     }
 
     @Test
-    public void testDuplicateProperties() {
+    void testDuplicateProperties() {
         HashSet<Integer> assignedStates = new HashSet<>();
         for (Block block : Block.values()) {
             for (Block blockWithState : block.possibleStates()) {
@@ -98,7 +98,7 @@ class BlockTest {
     }
 
     @Test
-    public void testStateIdConversion() {
+    void testStateIdConversion() {
         for (Block block : Block.values()) {
             for (Block blockWithState : block.possibleStates()) {
                 assertEquals(blockWithState, Block.fromStateId(blockWithState.stateId()));
