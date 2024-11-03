@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(MicrotusExtension.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public abstract class AbstractItemComponentTest<T> {
+abstract class AbstractItemComponentTest<T> {
 
     protected abstract @NotNull DataComponent<T> component();
 
@@ -34,7 +34,7 @@ public abstract class AbstractItemComponentTest<T> {
 
     @ParameterizedTest(name = "{0}")
     @MethodSource("directReadWriteMethodSource")
-    public void directReadWriteTest(String testName, @NotNull T entry, Env env) {
+    void directReadWriteTest(String testName, @NotNull T entry, Env env) {
         var context = new BinaryTagSerializer.ContextWithRegistries(env.process());
         if (component().isSerialized()) {
             var written1 = component().write(context, entry);

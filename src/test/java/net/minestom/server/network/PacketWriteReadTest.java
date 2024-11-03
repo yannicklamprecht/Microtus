@@ -39,7 +39,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 /**
  * Ensures that packet can be written and read correctly.
  */
-public class PacketWriteReadTest {
+class PacketWriteReadTest {
     private static final List<ServerPacket> SERVER_PACKETS = new ArrayList<>();
     private static final List<ClientPacket> CLIENT_PACKETS = new ArrayList<>();
 
@@ -47,7 +47,7 @@ public class PacketWriteReadTest {
     private static final Vec VEC = new Vec(5, 5, 5);
 
     @BeforeAll
-    public static void setupServer() {
+    static void setupServer() {
         // Handshake
         SERVER_PACKETS.add(new ResponsePacket(new JsonObject().toString()));
         // Status
@@ -156,7 +156,7 @@ public class PacketWriteReadTest {
     }
 
     @BeforeAll
-    public static void setupClient() {
+    static void setupClient() {
         CLIENT_PACKETS.add(new ClientHandshakePacket(755, "localhost", 25565, ClientHandshakePacket.Intent.LOGIN));
     }
 

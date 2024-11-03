@@ -41,7 +41,7 @@ import java.util.zip.ZipFile;
 
 public class ExtensionManager {
 
-    public final static Logger LOGGER = LoggerFactory.getLogger(ExtensionManager.class);
+    public static final Logger LOGGER = LoggerFactory.getLogger(ExtensionManager.class);
 
     public static final String INDEV_CLASSES_FOLDER = "minestom.extension.indevfolder.classes";
     public static final String INDEV_RESOURCES_FOLDER = "minestom.extension.indevfolder.resources";
@@ -592,7 +592,7 @@ public class ExtensionManager {
                 } catch (DependencyResolutionException ex) {
                     throw new IllegalStateException("Error resolving libraries", ex);
                 }
-                LOGGER.trace("Dependency of extension {}: {}", discoveredExtension.getName(), result.toString());
+                LOGGER.trace("Dependency of extension {}: {}", discoveredExtension.getName(), result);
                 result.getArtifactResults().forEach(artifactResult -> {
                     try {
                         discoveredExtension.files.add(artifactResult.getArtifact().getFile().toURI().toURL());

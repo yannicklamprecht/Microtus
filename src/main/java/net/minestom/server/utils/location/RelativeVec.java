@@ -66,7 +66,7 @@ public final class RelativeVec {
     }
 
     public @NotNull Vec fromSender(@Nullable CommandSender sender) {
-        final var entityPosition = sender instanceof Player ? ((Player) sender).getPosition() : Pos.ZERO;
+        final var entityPosition = sender instanceof Player player ? player.getPosition() : Pos.ZERO;
         return from(entityPosition);
     }
 

@@ -1,7 +1,5 @@
 package net.minestom.server.network.plugin;
 
-import org.jetbrains.annotations.Nullable;
-
 import java.util.concurrent.CompletableFuture;
 
 public class LoginPluginRequest {
@@ -9,7 +7,7 @@ public class LoginPluginRequest {
     private final byte[] requestPayload;
     private final CompletableFuture<LoginPluginResponse> responseFuture = new CompletableFuture<>();
 
-    public LoginPluginRequest(String channel, @Nullable byte[] requestPayload) {
+    public LoginPluginRequest(String channel, byte[] requestPayload) {
         this.channel = channel;
         this.requestPayload = requestPayload;
     }
@@ -18,7 +16,7 @@ public class LoginPluginRequest {
         return channel;
     }
 
-    public @Nullable byte[] getRequestPayload() {
+    public byte[] getRequestPayload() {
         return requestPayload;
     }
 

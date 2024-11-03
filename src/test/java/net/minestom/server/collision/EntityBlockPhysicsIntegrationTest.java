@@ -62,7 +62,7 @@ class EntityBlockPhysicsIntegrationTest {
     }
 
     @Test
-    public void entityPhysicsCheckShortDiagonal(Env env) {
+    void entityPhysicsCheckShortDiagonal(Env env) {
         var instance = env.createFlatInstance();
         instance.setBlock(0, 42, 1, Block.STONE);
 

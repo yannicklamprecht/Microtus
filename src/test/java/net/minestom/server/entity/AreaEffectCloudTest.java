@@ -8,11 +8,12 @@ import net.minestom.server.item.Material;
 import net.minestom.server.particle.Particle;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class AreaEffectCloudTest {
+class AreaEffectCloudTest {
     @Test
-    public void createWithDustParticle() {
+    void createWithDustParticle() {
         int colour = 0x5505FF01;
 
         int b = (colour & 0x000000FF);
@@ -39,7 +40,7 @@ public class AreaEffectCloudTest {
     }
 
     @Test
-    public void createWithDustTransition() {
+    void createWithDustTransition() {
         int colour = 0xFF05FF01;
         int colourAfter = 0xFF05FF01;
 
@@ -74,7 +75,7 @@ public class AreaEffectCloudTest {
     }
 
     @Test
-    public void createWithBlockParticle() {
+    void createWithBlockParticle() {
         Block block = Block.GRASS_BLOCK;
         Particle particle = Particle.BLOCK.withBlock(block);
 
@@ -86,11 +87,11 @@ public class AreaEffectCloudTest {
         assert gotParticle == particle;
 
         Particle.Block gotBlock = (Particle.Block) gotParticle;
-        assert gotBlock.block() == block;
+        assertEquals(block, gotBlock.block());
     }
 
     @Test
-    public void createWithBlockMarkerParticle() {
+    void createWithBlockMarkerParticle() {
         Block block = Block.GRASS_BLOCK;
         Particle particle = Particle.BLOCK_MARKER.withBlock(block);
 
@@ -102,11 +103,11 @@ public class AreaEffectCloudTest {
         assert gotParticle == particle;
 
         Particle.BlockMarker gotBlock = (Particle.BlockMarker) gotParticle;
-        assert gotBlock.block() == block;
+        assertEquals(block, gotBlock.block());
     }
 
     @Test
-    public void createWithItemParticle() {
+    void createWithItemParticle() {
         Particle particle = Particle.ITEM.withItem(ItemStack.of(Material.ACACIA_LOG));
 
         Entity entity = new Entity(EntityTypes.AREA_EFFECT_CLOUD);
@@ -117,11 +118,11 @@ public class AreaEffectCloudTest {
         assert gotParticle == particle;
 
         Particle.Item gotBlock = (Particle.Item) gotParticle;
-        assert gotBlock.item().material() == Material.ACACIA_LOG;
+        assertEquals(Material.ACACIA_LOG, gotBlock.item().material());
     }
 
     @Test
-    public void createWithSculkChargeParticle() {
+    void createWithSculkChargeParticle() {
         Particle particle = Particle.SCULK_CHARGE.withRoll(3);
 
         Entity entity = new Entity(EntityTypes.AREA_EFFECT_CLOUD);
@@ -132,6 +133,6 @@ public class AreaEffectCloudTest {
         assert gotParticle == particle;
 
         Particle.SculkCharge gotBlock = (Particle.SculkCharge) gotParticle;
-        assert gotBlock.roll() == 3;
+        assertEquals(3, gotBlock.roll());
     }
 }
