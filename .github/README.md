@@ -1,4 +1,4 @@
-<img src="https://github.com/OneLiteFeatherNET/wiki/blob/main/readme-assets/logo.png" alt="Microtus Logo" width="200">
+<img src="https://github.com/OneLiteFeatherNET/wiki/blob/master/readme-assets/logo.png" alt="Microtus Logo" width="200">
 
 # Microtus
 
