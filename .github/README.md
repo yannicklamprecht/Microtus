@@ -1,3 +1,5 @@
+<img src="https://github.com/OneLiteFeatherNET/repo-name/blob/main/readme-assets/logo.png" alt="Microtus Logo" width="200">
+
 # Microtus
 
 [![license](https://img.shields.io/github/license/OneLiteFeatherNET/Microtus?style=for-the-badge&color=b2204c)](../LICENSE)
